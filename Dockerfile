@@ -18,7 +18,7 @@ RUN k6 version
 RUN npm install
 
 # Run Rollup to bundle the JavaScript files
-RUN npm run build
+RUN npm rollup
 
 # Command to run your Node.js application
 CMD ["npm", "start"]
