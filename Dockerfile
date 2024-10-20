@@ -11,6 +11,7 @@ COPY . .
 RUN mv /usr/src/app/binaries/k6 /usr/local/bin/k6 \
     && chmod +x /usr/local/bin/k6
 
+RUN mkdir -p /usr/src/app/dist && chmod -R 777 /usr/src/app/dist
 # Confirm k6 installation
 RUN k6 version
 
@@ -19,3 +20,6 @@ RUN npm install
 
 # Run Rollup to bundle the JavaScript files
 # Command to run your Node.js application
+RUN npm run rollup
+
+RUN k6 run dist/test.js
